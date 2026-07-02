@@ -1,19 +1,29 @@
 import { useState } from "react";
-function App(){
-  const [likes,setlikes]=useState(0);
-  function Handlelike(){
-    setlikes(likes+1);
-  }
-  function lowLikes(){
-    if(likes>0){
-    setlikes(likes-1);
-    }
-  }
-  return(
+function App() {
+  const [name, setname] = useState("");
+  const [Age, setAge]=useState("")
+
+  return (
     <>
-    <h2>{likes} likes </h2>
-    <button onClick={Handlelike}>LIKE</button>
-    <button onClick={lowLikes}>DISLIKE</button>
+      <h2>Hello {name}</h2>
+      <p>Age: {Age}</p>
+
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={name}
+        onChange={(event) => {
+          setname(event.target.value);
+        }}
+      />
+      <input
+        type="text"
+        placeholder="Enter your age"
+        value={Age}
+        onChange={(event) => {
+          setAge(event.target.value);
+        }}
+      />
     </>
 
   );
