@@ -1,31 +1,59 @@
 import { useState } from "react";
+
 function App() {
-  const [name, setname] = useState("");
-  const [Age, setAge]=useState("")
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
+
+  function addTask() {
+    setTasks([...tasks,{ 
+      text: task,
+      completed: false,
+    },]);
+    setTask("");
+  }
+
+  function deleteTask(indexToDelete) {
+    const updatedTasks = tasks.filter((task, index) => {
+      return index !== indexToDelete;
+    });
+
+    setTasks(updatedTasks);
+  }
+  function toggleSwitch(indextotoggle){
+    const newi=tasks.map((task,index)=>{
+      if (index === indextotoggle){
+        return {...task,completed: !task.completed,}}
+      else{
+        return {...task,completed: task.completed,}
+      }
+    })
+    setTasks(newi);
+  }
 
   return (
     <>
-      <h2>Hello {name}</h2>
-      <p>Age: {Age}</p>
+      <h1>Task Manager</h1>
 
       <input
         type="text"
-        placeholder="Enter your name"
-        value={name}
+        value={task}
+        placeholder="Enter Task"
         onChange={(event) => {
-          setname(event.target.value);
+          setTask(event.target.value);
         }}
       />
-      <input
-        type="text"
-        placeholder="Enter your age"
-        value={Age}
-        onChange={(event) => {
-          setAge(event.target.value);
-        }}
-      />
+
+      <button onClick={addTask}>ADD</button>
+
+      {tasks.map((task, index) => (
+        <div key={index}>
+          <span>{task.text}</span>
+          <button onClick={() => deleteTask(index)}>DEL</button>
+          <button onClick={()=> toggleSwitch(index)}>{task.completed ? "✅" : "⬜"}</button>
+        </div>
+      ))}
     </>
-
   );
 }
-export default App
+
+export default App;
