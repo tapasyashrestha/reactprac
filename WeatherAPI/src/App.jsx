@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchBar from "./Searchbar";
-import WeatherCard from "./weatherCard";
+import WeatherCard from "./WeatherCard";
 
 function App() {
   const [city, setCity] = useState("");
@@ -8,6 +8,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+  console.log(import.meta.env.VITE_WEATHER_API_KEY);
 
   async function getWeather() {
     try {
@@ -48,7 +49,7 @@ function App() {
       {loading && <p>⏳ Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <weatherCard
+      <WeatherCard
         weather={weather} />
 
 
