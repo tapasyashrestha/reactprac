@@ -1,4 +1,4 @@
-function App() {
+function Login() {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center p-4">
       <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col gap-4 w-full max-w-sm">
@@ -22,10 +22,10 @@ function App() {
           Submit
         </button>
 
-        <p className="text-gray-500 mt-2 text-center text-sm">
-          Don&apos;t have an account?{" "}
+        <p className="text-gray-500 text-center text-sm">
+          Don't have an account?
           <span className="text-blue-500 font-medium cursor-pointer hover:underline">
-            Sign Up
+            {" "}Sign Up
           </span>
         </p>
       </div>
@@ -33,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
